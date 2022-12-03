@@ -1,0 +1,66 @@
+/* Default font */
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative; /*always set parent to relative to use absolute in child*/
+  transition: 0.8s ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0; /*do not show anything yet*/
+}
+
+.panel.active {
+  flex: 5; /* for the active class take a larger width*/
+}
+
+.panel.active h3 {
+  opacity: 1; /* show for the active class*/
+  transition: opacity 0.3s ease-in 0.4s; /* transition on the opacity with a slight delay for a smoother effect*/
+}
+
+/* what should happen on smaller screens < 480px */
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  /* grab the last two panels and don't display them */
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+}
